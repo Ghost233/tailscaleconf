@@ -1,0 +1,18 @@
+#内容：github-copilot
+#数量：6条
+
+#https://docs.github.com/en/copilot/managing-copilot/managing-github-copilot-in-your-organization/configuring-your-proxy-server-or-firewall-for-copilot
+
+#https://copilot-proxy.githubusercontent.com	API service for Copilot suggestions
+#https://origin-tracker.githubusercontent.com	API service for Copilot suggestions
+#https://*.githubcopilot.com1	API service for Copilot suggestions
+#https://*.individual.githubcopilot.com2	API service for Copilot suggestions
+#https://*.business.githubcopilot.com3	API service for Copilot suggestions
+#https://*.enterprise.githubcopilot.com4	API service for Copilot suggestions
+
+DOMAIN,copilot-proxy.githubusercontent.com
+DOMAIN,origin-tracker.githubusercontent.com
+DOMAIN-SUFFIX,githubcopilot.com
+DOMAIN-SUFFIX,individual.githubcopilot.com
+DOMAIN-SUFFIX,business.githubcopilot.com
+DOMAIN-SUFFIX,enterprise.githubcopilot.com
