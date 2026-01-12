@@ -52,6 +52,10 @@ python3 ssr_to_shadowrocket.py list 20
 
 # 使用 full 模式，15 并发
 python3 ssr_to_shadowrocket.py full 15
+
+# 输出 Quantumult X 规则（同样的参数格式）
+python3 ssr_to_quantumultx.py list 20
+python3 ssr_to_quantumultx.py full 15
 ```
 
 ### 输出文件说明
