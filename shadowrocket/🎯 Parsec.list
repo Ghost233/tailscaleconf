@@ -1,0 +1,8 @@
+# Shadowrocket Rules for 🎯 Parsec
+# Generated from ACL4SSR.ini
+# Mode: list
+# Total rules: 3
+
+DOMAIN-SUFFIX,parsec.app,PROXY
+DOMAIN-SUFFIX,parsecgaming.com,PROXY
+DOMAIN-SUFFIX,parsecusercontent.com,PROXY

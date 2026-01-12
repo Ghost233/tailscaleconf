@@ -1,0 +1,19 @@
+# Shadowrocket Rules for 📹 油管视频
+# Generated from ACL4SSR.ini
+# Mode: list
+# Total rules: 14
+
+DOMAIN-KEYWORD,youtube,PROXY
+DOMAIN,youtubei.googleapis.com,PROXY
+DOMAIN,yt3.ggpht.com,PROXY
+DOMAIN-SUFFIX,googlevideo.com,PROXY
+DOMAIN-SUFFIX,gvt2.com,PROXY
+DOMAIN-SUFFIX,withyoutube.com,PROXY
+DOMAIN-SUFFIX,youtu.be,PROXY
+DOMAIN-SUFFIX,youtube-nocookie.com,PROXY
+DOMAIN-SUFFIX,youtube.com,PROXY
+DOMAIN-SUFFIX,youtubeeducation.com,PROXY
+DOMAIN-SUFFIX,youtubegaming.com,PROXY
+DOMAIN-SUFFIX,youtubekids.com,PROXY
+DOMAIN-SUFFIX,yt.be,PROXY
+DOMAIN-SUFFIX,ytimg.com,PROXY

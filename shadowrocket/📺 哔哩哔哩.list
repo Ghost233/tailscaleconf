@@ -1,0 +1,46 @@
+# Shadowrocket Rules for 📺 哔哩哔哩
+# Generated from ACL4SSR.ini
+# Mode: list
+# Total rules: 41
+
+DOMAIN,apiintl.biliapi.net,DIRECT
+DOMAIN,upos-hz-mirrorakam.akamaized.net,DIRECT
+DOMAIN-SUFFIX,acg.tv,DIRECT
+DOMAIN-SUFFIX,acgvideo.com,DIRECT
+DOMAIN-SUFFIX,b23.tv,DIRECT
+DOMAIN-SUFFIX,bigfun.cn,DIRECT
+DOMAIN-SUFFIX,bigfunapp.cn,DIRECT
+DOMAIN-SUFFIX,biliapi.com,DIRECT
+DOMAIN-SUFFIX,biliapi.net,DIRECT
+DOMAIN-SUFFIX,bilibili.co,DIRECT
+DOMAIN-SUFFIX,bilibili.com,DIRECT
+DOMAIN-SUFFIX,bilibili.tv,DIRECT
+DOMAIN-SUFFIX,biligame.com,DIRECT
+DOMAIN-SUFFIX,biligame.net,DIRECT
+DOMAIN-SUFFIX,biliintl.co,DIRECT
+DOMAIN-SUFFIX,bilivideo.cn,DIRECT
+DOMAIN-SUFFIX,bilivideo.com,DIRECT
+DOMAIN-SUFFIX,hdslb.com,DIRECT
+DOMAIN-SUFFIX,im9.com,DIRECT
+DOMAIN-SUFFIX,smtcdns.net,DIRECT
+DOMAIN,p-bstarstatic.akamaized.net,DIRECT
+DOMAIN,p.bstarstatic.com,DIRECT
+DOMAIN,upos-bstar-mirrorakam.akamaized.net,DIRECT
+DOMAIN,upos-bstar1-mirrorakam.akamaized.net,DIRECT
+DOMAIN,upos-hz-mirrorakam.akamaized.net,DIRECT
+DOMAIN-SUFFIX,acgvideo.com,DIRECT
+DOMAIN-SUFFIX,bilibili.com,DIRECT
+DOMAIN-SUFFIX,bilibili.tv,DIRECT
+IP-CIDR,45.43.32.234/32,DIRECT,no-resolve
+IP-CIDR,103.151.150.0/23,DIRECT,no-resolve
+IP-CIDR,119.29.29.29/32,DIRECT,no-resolve
+IP-CIDR,128.1.62.200/32,DIRECT,no-resolve
+IP-CIDR,128.1.62.201/32,DIRECT,no-resolve
+IP-CIDR,150.116.92.250/32,DIRECT,no-resolve
+IP-CIDR,164.52.33.178/32,DIRECT,no-resolve
+IP-CIDR,164.52.33.182/32,DIRECT,no-resolve
+IP-CIDR,164.52.76.18/32,DIRECT,no-resolve
+IP-CIDR,203.107.1.33/32,DIRECT,no-resolve
+IP-CIDR,203.107.1.34/32,DIRECT,no-resolve
+IP-CIDR,203.107.1.65/32,DIRECT,no-resolve
+IP-CIDR,203.107.1.66/32,DIRECT,no-resolve

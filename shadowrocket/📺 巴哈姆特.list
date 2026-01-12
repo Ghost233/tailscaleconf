@@ -1,0 +1,10 @@
+# Shadowrocket Rules for 📺 巴哈姆特
+# Generated from ACL4SSR.ini
+# Mode: list
+# Total rules: 5
+
+DOMAIN,bahamut.akamaized.net,PROXY
+DOMAIN,gamer-cds.cdn.hinet.net,PROXY
+DOMAIN,gamer2-cds.cdn.hinet.net,PROXY
+DOMAIN-SUFFIX,bahamut.com.tw,PROXY
+DOMAIN-SUFFIX,gamer.com.tw,PROXY

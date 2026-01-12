@@ -1,0 +1,15 @@
+# Shadowrocket Rules for 📲 电报消息
+# Generated from ACL4SSR.ini
+# Mode: list
+# Total rules: 10
+
+DOMAIN-SUFFIX,t.me,PROXY
+DOMAIN-SUFFIX,tdesktop.com,PROXY
+DOMAIN-SUFFIX,telegra.ph,PROXY
+DOMAIN-SUFFIX,telegram.me,PROXY
+DOMAIN-SUFFIX,telegram.org,PROXY
+DOMAIN-SUFFIX,telesco.pe,PROXY
+IP-CIDR,91.108.0.0/16,PROXY,no-resolve
+IP-CIDR,95.161.64.0/20,PROXY,no-resolve
+IP-CIDR,109.239.140.0/24,PROXY,no-resolve
+IP-CIDR,149.154.160.0/20,PROXY,no-resolve

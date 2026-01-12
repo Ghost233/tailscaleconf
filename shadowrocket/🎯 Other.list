@@ -1,0 +1,6 @@
+# Shadowrocket Rules for 🎯 Other
+# Generated from ACL4SSR.ini
+# Mode: list
+# Total rules: 1
+
+DOMAIN-SUFFIX,jetbrains.com,PROXY

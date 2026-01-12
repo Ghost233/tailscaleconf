@@ -1,0 +1,8 @@
+# Shadowrocket Rules for 🤖 AI
+# Generated from ACL4SSR.ini
+# Mode: list
+# Total rules: 3
+
+DOMAIN-SUFFIX,dify.ai,PROXY
+DOMAIN-SUFFIX,cursor.sh,PROXY
+DOMAIN-SUFFIX,cursor.com,PROXY

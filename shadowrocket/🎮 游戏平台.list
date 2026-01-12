@@ -1,0 +1,56 @@
+# Shadowrocket Rules for 🎮 游戏平台
+# Generated from ACL4SSR.ini
+# Mode: list
+# Total rules: 51
+
+DOMAIN,steambroadcast.akamaized.net,PROXY
+DOMAIN,steamcommunity-a.akamaihd.net,PROXY
+DOMAIN,steampipe.akamaized.net,PROXY
+DOMAIN,steamstore-a.akamaihd.net,PROXY
+DOMAIN,steamusercontent-a.akamaihd.net,PROXY
+DOMAIN,steamuserimages-a.akamaihd.net,PROXY
+DOMAIN-SUFFIX,fanatical.com,PROXY
+DOMAIN-SUFFIX,humblebundle.com,PROXY
+DOMAIN-SUFFIX,playartifact.com,PROXY
+DOMAIN-SUFFIX,steam-chat.com,PROXY
+DOMAIN-SUFFIX,steamcommunity.com,PROXY
+DOMAIN-SUFFIX,steamgames.com,PROXY
+DOMAIN-SUFFIX,steampowered.com,PROXY
+DOMAIN-SUFFIX,steamserver.net,PROXY
+DOMAIN-SUFFIX,steamstat.us,PROXY
+DOMAIN-SUFFIX,steamstatic.com,PROXY
+DOMAIN-SUFFIX,underlords.com,PROXY
+DOMAIN-SUFFIX,valvesoftware.com,PROXY
+DOMAIN,cloudsync-prod.s3.amazonaws.com,PROXY
+DOMAIN,eaasserts-a.akamaihd.net,PROXY
+DOMAIN,origin-a.akamaihd.net,PROXY
+DOMAIN,originasserts.akamaized.net,PROXY
+DOMAIN,rtm.tnt-ea.com,PROXY
+DOMAIN-SUFFIX,ea.com,PROXY
+DOMAIN-SUFFIX,origin.com,PROXY
+DOMAIN-SUFFIX,nintendo-europe.com,PROXY
+DOMAIN-SUFFIX,nintendo.be,PROXY
+DOMAIN-SUFFIX,nintendo.co.jp,PROXY
+DOMAIN-SUFFIX,nintendo.co.uk,PROXY
+DOMAIN-SUFFIX,nintendo.com,PROXY
+DOMAIN-SUFFIX,nintendo.com.au,PROXY
+DOMAIN-SUFFIX,nintendo.de,PROXY
+DOMAIN-SUFFIX,nintendo.es,PROXY
+DOMAIN-SUFFIX,nintendo.eu,PROXY
+DOMAIN-SUFFIX,nintendo.fr,PROXY
+DOMAIN-SUFFIX,nintendo.it,PROXY
+DOMAIN-SUFFIX,nintendo.jp,PROXY
+DOMAIN-SUFFIX,nintendo.net,PROXY
+DOMAIN-SUFFIX,nintendo.nl,PROXY
+DOMAIN-SUFFIX,nintendowifi.net,PROXY
+DOMAIN-SUFFIX,epicgames.com,PROXY
+DOMAIN-SUFFIX,epicgames.dev,PROXY
+DOMAIN-SUFFIX,helpshift.com,PROXY
+DOMAIN-SUFFIX,paragon.com,PROXY
+DOMAIN-SUFFIX,unrealengine.com,PROXY
+DOMAIN-SUFFIX,ol.epicgames.com,PROXY
+DOMAIN-SUFFIX,playstation.com,PROXY
+DOMAIN-SUFFIX,playstation.net,PROXY
+DOMAIN-SUFFIX,playstationnetwork.com,PROXY
+DOMAIN-SUFFIX,sony.com,PROXY
+DOMAIN-SUFFIX,sonyentertainmentnetwork.com,PROXY

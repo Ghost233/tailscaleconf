@@ -1,0 +1,13 @@
+# Shadowrocket Rules for 🎯 Github Copilot
+# Generated from ACL4SSR.ini
+# Mode: list
+# Total rules: 8
+
+DOMAIN,copilot-proxy.githubusercontent.com,PROXY
+DOMAIN,origin-tracker.githubusercontent.com,PROXY
+DOMAIN-SUFFIX,githubcopilot.com,PROXY
+DOMAIN-SUFFIX,individual.githubcopilot.com,PROXY
+DOMAIN-SUFFIX,business.githubcopilot.com,PROXY
+DOMAIN-SUFFIX,enterprise.githubcopilot.com,PROXY
+DOMAIN-SUFFIX,generativelanguage.googleapis.com,PROXY
+DOMAIN-SUFFIX,gemini.google.com,PROXY

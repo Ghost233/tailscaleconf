@@ -13,20 +13,46 @@ import hashlib
 import json
 from pathlib import Path
 from typing import Dict, List, Tuple, Optional
+from concurrent.futures import ThreadPoolExecutor, as_completed
 
 # 配置常量
 ACL4SSR_INI_PATH = "/Users/ghost233/code/tailscaleconf/ACL4SSR.ini"
 OUTPUT_DIR = "/Users/ghost233/code/tailscaleconf/shadowrocket"
 CACHE_DIR = "/Users/ghost233/code/tailscaleconf/cache"
 
-# 策略组名映射
+# 策略组名映射（用于生成独立规则列表）
 POLICY_MAP = {
     "🎯 全球直连": "DIRECT",
     "🛑 广告拦截": "REJECT",
     "🍃 应用净化": "REJECT",
     "🆎 AdBlock": "REJECT",
     "🛡️ 隐私防护": "REJECT",
+    "🚀 节点选择": "PROXY",
+    "🌍 国外媒体": "PROXY",
+    "🌏 国内媒体": "DIRECT",
+    "🍎 苹果服务": "DIRECT",
+    "🎥 奈飞视频": "PROXY",
+    "🎮 游戏平台": "PROXY",
+    "🎶 网易音乐": "DIRECT",
+    "🐟 漏网之鱼": "PROXY",
+    "💬 OpenAi": "PROXY",
+    "📢 谷歌FCM": "PROXY",
+    "📲 电报消息": "PROXY",
+    "📹 油管视频": "PROXY",
+    "📺 巴哈姆特": "PROXY",
+    "📺 哔哩哔哩": "DIRECT",
+    "🤖 AI": "PROXY",
+    "🎇 Anthropic": "PROXY",
+    "🎯 Github Copilot": "PROXY",
+    "🎯 Google": "PROXY",
+    "🎯 Other": "PROXY",
+    "🎯 Parsec": "PROXY",
 }
+
+# 生成模式
+GENERATE_MODE = "list"  # "list" 或 "full"
+# list: 生成独立规则列表文件(.list)，不包含策略组
+# full: 生成完整配置文件(.conf)，包含所有段和策略组
 
 # Clash规则类型到Shadowrocket的映射
 RULE_TYPE_MAP = {
@@ -42,10 +68,12 @@ RULE_TYPE_MAP = {
 class SSRConverter:
     """SSR规则转Shadowrocket转换器"""
 
-    def __init__(self, ini_path: str, output_dir: str, cache_dir: str):
+    def __init__(self, ini_path: str, output_dir: str, cache_dir: str, mode: str = "list", max_workers: int = 10):
         self.ini_path = ini_path
         self.output_dir = Path(output_dir)
         self.cache_dir = Path(cache_dir)
+        self.mode = mode  # "list" 或 "full"
+        self.max_workers = max_workers  # 最大并发数
         self.rulesets: List[Tuple[str, str]] = []  # (策略组, 规则URL或特殊规则)
         self.converted_rules: Dict[str, List[str]] = {}  # 策略组 -> 规则列表
 
@@ -137,8 +165,13 @@ class SSRConverter:
         rule_type = parts[0].strip()
         rule_value = parts[1].strip()
 
-        # 转换策略组名
-        final_policy = POLICY_MAP.get(policy_group, policy_group)
+        # 根据模式选择策略
+        if self.mode == "list":
+            # 独立规则列表模式：映射到基本策略
+            final_policy = POLICY_MAP.get(policy_group, "PROXY")
+        else:
+            # 完整配置模式：保留策略组名
+            final_policy = policy_group
 
         # 处理特殊规则类型
         if rule_type in ["DOMAIN", "DOMAIN-SUFFIX", "DOMAIN-KEYWORD"]:
@@ -155,7 +188,6 @@ class SSRConverter:
             return f"FINAL,{final_policy}"
 
         # 不支持的规则类型
-        print(f"  跳过不支持的规则: {rule_type}")
         return None
 
     def process_ruleset(self, policy_group: str, rule_def: str) -> None:
@@ -207,19 +239,21 @@ class SSRConverter:
         print("\n正在生成输出文件...")
 
         all_rules = []
+        file_extension = ".list" if self.mode == "list" else ".conf"
 
         for policy_group, rules in self.converted_rules.items():
             if not rules:
                 continue
 
             # 生成文件名（保留表情符号）
-            filename = f"{policy_group}.conf"
+            filename = f"{policy_group}{file_extension}"
             filepath = self.output_dir / filename
 
             # 写入分组文件
             with open(filepath, "w", encoding="utf-8") as f:
                 f.write(f"# Shadowrocket Rules for {policy_group}\n")
                 f.write(f"# Generated from ACL4SSR.ini\n")
+                f.write(f"# Mode: {self.mode}\n")
                 f.write(f"# Total rules: {len(rules)}\n\n")
                 for rule in rules:
                     f.write(f"{rule}\n")
@@ -229,30 +263,54 @@ class SSRConverter:
             # 添加到合并列表
             all_rules.extend(rules)
 
-        # 生成合并的ALL.conf文件
+        # 生成合并文件
         if all_rules:
-            all_filepath = self.output_dir / "ALL.conf"
+            all_filename = f"ALL{file_extension}"
+            all_filepath = self.output_dir / all_filename
             with open(all_filepath, "w", encoding="utf-8") as f:
                 f.write(f"# Shadowrocket Rules - ALL\n")
                 f.write(f"# Generated from ACL4SSR.ini\n")
+                f.write(f"# Mode: {self.mode}\n")
                 f.write(f"# Total rules: {len(all_rules)}\n\n")
                 for rule in all_rules:
                     f.write(f"{rule}\n")
 
-            print(f"  生成合并文件: ALL.conf ({len(all_rules)} 条规则)")
+            print(f"  生成合并文件: {all_filename} ({len(all_rules)} 条规则)")
+
+        # 如果是full模式，生成完整配置文件
+        if self.mode == "full":
+            self.generate_full_config()
 
     def convert(self) -> None:
         """执行完整的转换流程"""
         print("=" * 60)
         print("SSR分流规则转Shadowrocket规则")
+        print(f"模式: {self.mode} ({'独立规则列表' if self.mode == 'list' else '完整配置文件'})")
+        print(f"并发数: {self.max_workers}")
         print("=" * 60)
 
         # 1. 解析配置文件
         self.parse_acl4ssr_ini()
 
-        # 2. 处理每个规则集
-        for policy_group, rule_def in self.rulesets:
-            self.process_ruleset(policy_group, rule_def)
+        # 2. 并发处理所有规则集
+        print(f"\n开始并发处理 {len(self.rulesets)} 个规则集...")
+        with ThreadPoolExecutor(max_workers=self.max_workers) as executor:
+            # 提交所有任务
+            future_to_ruleset = {
+                executor.submit(self.process_ruleset, policy_group, rule_def): (policy_group, rule_def)
+                for policy_group, rule_def in self.rulesets
+            }
+
+            # 收集结果
+            completed = 0
+            for future in as_completed(future_to_ruleset):
+                policy_group, rule_def = future_to_ruleset[future]
+                try:
+                    future.result()
+                    completed += 1
+                    print(f"  [{completed}/{len(self.rulesets)}] 完成: {policy_group}")
+                except Exception as e:
+                    print(f"  处理失败: {policy_group} - {e}")
 
         # 3. 生成输出文件
         self.generate_output_files()
@@ -260,12 +318,73 @@ class SSRConverter:
         print("\n" + "=" * 60)
         print("转换完成！")
         print(f"输出目录: {self.output_dir}")
+        print(f"模式: {self.mode}")
         print("=" * 60)
+
+
+    def generate_full_config(self) -> None:
+        """生成完整的Shadowrocket配置文件"""
+        print("\n正在生成完整配置文件...")
+        
+        full_config_path = self.output_dir / "shadowrocket_full.conf"
+        
+        with open(full_config_path, "w", encoding="utf-8") as f:
+            # [General] 段
+            f.write("[General]\n")
+            f.write("bypass-system = true\n")
+            f.write("skip-proxy = 192.168.0.0/16, 10.0.0.0/8, 172.16.0.0/12, localhost, *.local\n")
+            f.write("dns-server = system\n")
+            f.write("ipv6 = true\n")
+            f.write("prefer-ipv6 = false\n")
+            f.write("\n")
+            
+            # [Rule] 段
+            f.write("[Rule]\n")
+            f.write("# Generated from ACL4SSR.ini\n\n")
+            
+            # 按策略组顺序写入规则
+            for policy_group, rules in self.converted_rules.items():
+                if rules:
+                    f.write(f"# {policy_group}\n")
+                    for rule in rules:
+                        f.write(f"{rule}\n")
+                    f.write("\n")
+            
+            # [Host] 段
+            f.write("[Host]\n")
+            f.write("localhost = 127.0.0.1\n")
+            f.write("\n")
+            
+            # [URL Rewrite] 段
+            f.write("[URL Rewrite]\n")
+            f.write("^https?://(www.)?g.cn https://www.google.com 302\n")
+            f.write("^https?://(www.)?google.cn https://www.google.com 302\n")
+        
+        print(f"  生成完整配置: shadowrocket_full.conf")
 
 
 def main():
     """主函数"""
-    converter = SSRConverter(ACL4SSR_INI_PATH, OUTPUT_DIR, CACHE_DIR)
+    import sys
+    
+    # 从命令行参数获取模式
+    mode = GENERATE_MODE
+    max_workers = 10
+    
+    if len(sys.argv) > 1:
+        if sys.argv[1] in ["list", "full"]:
+            mode = sys.argv[1]
+    
+    if len(sys.argv) > 2:
+        try:
+            max_workers = int(sys.argv[2])
+        except ValueError:
+            pass
+    
+    print(f"启动模式: {mode}")
+    print(f"并发数: {max_workers}\n")
+    
+    converter = SSRConverter(ACL4SSR_INI_PATH, OUTPUT_DIR, CACHE_DIR, mode=mode, max_workers=max_workers)
     converter.convert()
 
 
