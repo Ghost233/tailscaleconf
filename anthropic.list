@@ -1,7 +1,7 @@
 #内容：Anthropic
 
 # Anthropic
-DOMAIN-SUFFIX,claude.ai
-DOMAIN-SUFFIX,anthropic.com
+DOMAIN-KEYWORD,anthropic
+DOMAIN-KEYWORD,claude
   
 DOMAIN-SUFFIX,tavily.com
