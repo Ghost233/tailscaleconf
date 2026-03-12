@@ -1,0 +1,22 @@
+# Quantumult X Rules for 💬 OpenAi
+# Generated from ACL4SSR.ini
+# Mode: list
+# Total rules: 17
+
+HOST-KEYWORD,openai,proxy
+HOST-SUFFIX,auth0.com,proxy
+HOST-SUFFIX,challenges.cloudflare.com,proxy
+HOST-SUFFIX,chatgpt.com,proxy
+HOST-SUFFIX,client-api.arkoselabs.com,proxy
+HOST-SUFFIX,events.statsigapi.net,proxy
+HOST-SUFFIX,featuregates.org,proxy
+HOST-SUFFIX,identrust.com,proxy
+HOST-SUFFIX,intercom.io,proxy
+HOST-SUFFIX,intercomcdn.com,proxy
+HOST-SUFFIX,oaistatic.com,proxy
+HOST-SUFFIX,oaiusercontent.com,proxy
+HOST-SUFFIX,openai.com,proxy
+HOST-SUFFIX,openaiapi-site.azureedge.net,proxy
+HOST-SUFFIX,sentry.io,proxy
+HOST-SUFFIX,stripe.com,proxy
+HOST-SUFFIX,sora.com,proxy

@@ -1,0 +1,7 @@
+# Quantumult X Rules for 🎯 Other
+# Generated from ACL4SSR.ini
+# Mode: list
+# Total rules: 2
+
+HOST-SUFFIX,jetbrains.com,proxy
+HOST-SUFFIX,happy-api.slopus.com,proxy

@@ -1,7 +1,8 @@
 # Shadowrocket Rules for 🎇 Anthropic
 # Generated from ACL4SSR.ini
 # Mode: list
-# Total rules: 2
+# Total rules: 3
 
-DOMAIN-SUFFIX,claude.ai,PROXY
-DOMAIN-SUFFIX,anthropic.com,PROXY
+DOMAIN-KEYWORD,anthropic,PROXY
+DOMAIN-KEYWORD,claude,PROXY
+DOMAIN-SUFFIX,tavily.com,PROXY

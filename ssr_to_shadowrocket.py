@@ -16,9 +16,10 @@ from typing import Dict, List, Tuple, Optional
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
 # 配置常量
-ACL4SSR_INI_PATH = "/Users/ghost233/code/tailscaleconf/ACL4SSR.ini"
-OUTPUT_DIR = "/Users/ghost233/code/tailscaleconf/shadowrocket"
-CACHE_DIR = "/Users/ghost233/code/tailscaleconf/cache"
+PROJECT_ROOT = Path(__file__).resolve().parent
+ACL4SSR_INI_PATH = str(PROJECT_ROOT / "ACL4SSR.ini")
+OUTPUT_DIR = str(PROJECT_ROOT / "shadowrocket")
+CACHE_DIR = str(PROJECT_ROOT / "cache")
 
 # 策略组名映射（用于生成独立规则列表）
 POLICY_MAP = {
@@ -68,7 +69,14 @@ RULE_TYPE_MAP = {
 class SSRConverter:
     """SSR规则转Shadowrocket转换器"""
 
-    def __init__(self, ini_path: str, output_dir: str, cache_dir: str, mode: str = "list", max_workers: int = 10):
+    def __init__(
+        self,
+        ini_path: str,
+        output_dir: str,
+        cache_dir: str,
+        mode: str = "list",
+        max_workers: int = 10,
+    ):
         self.ini_path = ini_path
         self.output_dir = Path(output_dir)
         self.cache_dir = Path(cache_dir)
@@ -216,6 +224,15 @@ class SSRConverter:
                 )
                 print(f"  添加GEOIP规则: {geoip_type}")
 
+            elif special_rule.startswith("IP-CIDR,"):
+                # IP-CIDR特殊规则
+                cidr = special_rule.split(",", 1)[1]
+                final_policy = POLICY_MAP.get(policy_group, policy_group)
+                self.converted_rules[policy_group].append(
+                    f"IP-CIDR,{cidr},{final_policy},no-resolve"
+                )
+                print(f"  添加IP-CIDR规则: {cidr}")
+
             return
 
         # 下载规则文件
@@ -285,7 +302,9 @@ class SSRConverter:
         """执行完整的转换流程"""
         print("=" * 60)
         print("SSR分流规则转Shadowrocket规则")
-        print(f"模式: {self.mode} ({'独立规则列表' if self.mode == 'list' else '完整配置文件'})")
+        print(
+            f"模式: {self.mode} ({'独立规则列表' if self.mode == 'list' else '完整配置文件'})"
+        )
         print(f"并发数: {self.max_workers}")
         print("=" * 60)
 
@@ -297,7 +316,10 @@ class SSRConverter:
         with ThreadPoolExecutor(max_workers=self.max_workers) as executor:
             # 提交所有任务
             future_to_ruleset = {
-                executor.submit(self.process_ruleset, policy_group, rule_def): (policy_group, rule_def)
+                executor.submit(self.process_ruleset, policy_group, rule_def): (
+                    policy_group,
+                    rule_def,
+                )
                 for policy_group, rule_def in self.rulesets
             }
 
@@ -321,27 +343,28 @@ class SSRConverter:
         print(f"模式: {self.mode}")
         print("=" * 60)
 
-
     def generate_full_config(self) -> None:
         """生成完整的Shadowrocket配置文件"""
         print("\n正在生成完整配置文件...")
-        
+
         full_config_path = self.output_dir / "shadowrocket_full.conf"
-        
+
         with open(full_config_path, "w", encoding="utf-8") as f:
             # [General] 段
             f.write("[General]\n")
             f.write("bypass-system = true\n")
-            f.write("skip-proxy = 192.168.0.0/16, 10.0.0.0/8, 172.16.0.0/12, localhost, *.local\n")
+            f.write(
+                "skip-proxy = 192.168.0.0/16, 10.0.0.0/8, 172.16.0.0/12, localhost, *.local\n"
+            )
             f.write("dns-server = system\n")
             f.write("ipv6 = true\n")
             f.write("prefer-ipv6 = false\n")
             f.write("\n")
-            
+
             # [Rule] 段
             f.write("[Rule]\n")
             f.write("# Generated from ACL4SSR.ini\n\n")
-            
+
             # 按策略组顺序写入规则
             for policy_group, rules in self.converted_rules.items():
                 if rules:
@@ -349,42 +372,44 @@ class SSRConverter:
                     for rule in rules:
                         f.write(f"{rule}\n")
                     f.write("\n")
-            
+
             # [Host] 段
             f.write("[Host]\n")
             f.write("localhost = 127.0.0.1\n")
             f.write("\n")
-            
+
             # [URL Rewrite] 段
             f.write("[URL Rewrite]\n")
             f.write("^https?://(www.)?g.cn https://www.google.com 302\n")
             f.write("^https?://(www.)?google.cn https://www.google.com 302\n")
-        
+
         print(f"  生成完整配置: shadowrocket_full.conf")
 
 
 def main():
     """主函数"""
     import sys
-    
+
     # 从命令行参数获取模式
     mode = GENERATE_MODE
     max_workers = 10
-    
+
     if len(sys.argv) > 1:
         if sys.argv[1] in ["list", "full"]:
             mode = sys.argv[1]
-    
+
     if len(sys.argv) > 2:
         try:
             max_workers = int(sys.argv[2])
         except ValueError:
             pass
-    
+
     print(f"启动模式: {mode}")
     print(f"并发数: {max_workers}\n")
-    
-    converter = SSRConverter(ACL4SSR_INI_PATH, OUTPUT_DIR, CACHE_DIR, mode=mode, max_workers=max_workers)
+
+    converter = SSRConverter(
+        ACL4SSR_INI_PATH, OUTPUT_DIR, CACHE_DIR, mode=mode, max_workers=max_workers
+    )
     converter.convert()
 
 

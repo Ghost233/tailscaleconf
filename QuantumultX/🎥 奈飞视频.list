@@ -1,0 +1,45 @@
+# Quantumult X Rules for 🎥 奈飞视频
+# Generated from ACL4SSR.ini
+# Mode: list
+# Total rules: 40
+
+HOST-KEYWORD,apiproxy-device-prod-nlb-,proxy
+HOST-KEYWORD,dualstack.apiproxy-,proxy
+HOST-KEYWORD,netflixdnstest,proxy
+HOST,netflix.com.edgesuite.net,proxy
+HOST-SUFFIX,fast.com,proxy
+HOST-SUFFIX,netflix.com,proxy
+HOST-SUFFIX,netflix.net,proxy
+HOST-SUFFIX,netflixdnstest0.com,proxy
+HOST-SUFFIX,netflixdnstest1.com,proxy
+HOST-SUFFIX,netflixdnstest2.com,proxy
+HOST-SUFFIX,netflixdnstest3.com,proxy
+HOST-SUFFIX,netflixdnstest4.com,proxy
+HOST-SUFFIX,netflixdnstest5.com,proxy
+HOST-SUFFIX,netflixdnstest6.com,proxy
+HOST-SUFFIX,netflixdnstest7.com,proxy
+HOST-SUFFIX,netflixdnstest8.com,proxy
+HOST-SUFFIX,netflixdnstest9.com,proxy
+HOST-SUFFIX,nflxext.com,proxy
+HOST-SUFFIX,nflximg.com,proxy
+HOST-SUFFIX,nflximg.net,proxy
+HOST-SUFFIX,nflxso.net,proxy
+HOST-SUFFIX,nflxvideo.net,proxy
+IP-CIDR,8.41.4.0/24,proxy,no-resolve
+IP-CIDR,23.246.0.0/18,proxy,no-resolve
+IP-CIDR,37.77.184.0/21,proxy,no-resolve
+IP-CIDR,38.72.126.0/24,proxy,no-resolve
+IP-CIDR,45.57.0.0/17,proxy,no-resolve
+IP-CIDR,64.120.128.0/17,proxy,no-resolve
+IP-CIDR,66.197.128.0/17,proxy,no-resolve
+IP-CIDR,69.53.224.0/19,proxy,no-resolve
+IP-CIDR,103.87.204.0/22,proxy,no-resolve
+IP-CIDR,108.175.32.0/20,proxy,no-resolve
+IP-CIDR,185.2.220.0/22,proxy,no-resolve
+IP-CIDR,185.9.188.0/22,proxy,no-resolve
+IP-CIDR,192.173.64.0/18,proxy,no-resolve
+IP-CIDR,198.38.96.0/19,proxy,no-resolve
+IP-CIDR,198.45.48.0/20,proxy,no-resolve
+IP-CIDR,203.75.84.0/24,proxy,no-resolve
+IP-CIDR,207.45.72.0/22,proxy,no-resolve
+IP-CIDR,208.75.76.0/22,proxy,no-resolve

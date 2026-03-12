@@ -1,0 +1,10 @@
+# Quantumult X Rules for 📺 巴哈姆特
+# Generated from ACL4SSR.ini
+# Mode: list
+# Total rules: 5
+
+HOST,bahamut.akamaized.net,proxy
+HOST,gamer-cds.cdn.hinet.net,proxy
+HOST,gamer2-cds.cdn.hinet.net,proxy
+HOST-SUFFIX,bahamut.com.tw,proxy
+HOST-SUFFIX,gamer.com.tw,proxy

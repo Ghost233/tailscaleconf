@@ -1,0 +1,20 @@
+# Quantumult X Rules for Ⓜ️ 微软云盘
+# Generated from ACL4SSR.ini
+# Mode: list
+# Total rules: 15
+
+HOST-KEYWORD,1drv,proxy
+HOST-KEYWORD,onedrive,proxy
+HOST-KEYWORD,skydrive,proxy
+HOST-SUFFIX,livefilestore.com,proxy
+HOST-SUFFIX,oneclient.sfx.ms,proxy
+HOST-SUFFIX,onedrive.com,proxy
+HOST-SUFFIX,onedrive.live.com,proxy
+HOST-SUFFIX,photos.live.com,proxy
+HOST-SUFFIX,sharepoint.com,proxy
+HOST-SUFFIX,sharepointonline.com,proxy
+HOST-SUFFIX,skydrive.wns.windows.com,proxy
+HOST-SUFFIX,spoprod-a.akamaihd.net,proxy
+HOST-SUFFIX,storage.live.com,proxy
+HOST-SUFFIX,storage.msn.com,proxy
+HOST-SUFFIX,microsoftpersonalcontent.com,proxy

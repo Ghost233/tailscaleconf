@@ -1,0 +1,57 @@
+# Quantumult X Rules for 🎯 Google
+# Generated from ACL4SSR.ini
+# Mode: list
+# Total rules: 52
+
+HOST-SUFFIX,1e100.net,proxy
+HOST-SUFFIX,2mdn.net,proxy
+HOST-SUFFIX,app-measurement.net,proxy
+HOST-SUFFIX,g.co,proxy
+HOST-SUFFIX,ggpht.com,proxy
+HOST-SUFFIX,goo.gl,proxy
+HOST-SUFFIX,googleapis.cn,proxy
+HOST-SUFFIX,googleapis.com,proxy
+HOST-SUFFIX,gstatic.cn,proxy
+HOST-SUFFIX,gstatic.com,proxy
+HOST-SUFFIX,gvt0.com,proxy
+HOST-SUFFIX,gvt1.com,proxy
+HOST-SUFFIX,gvt2.com,proxy
+HOST-SUFFIX,gvt3.com,proxy
+HOST-SUFFIX,xn--ngstr-lra8j.com,proxy
+HOST-SUFFIX,youtu.be,proxy
+HOST-SUFFIX,youtube-nocookie.com,proxy
+HOST-SUFFIX,youtube.com,proxy
+HOST-SUFFIX,yt.be,proxy
+HOST-SUFFIX,ytimg.com,proxy
+HOST-SUFFIX,google.com,proxy
+IP-CIDR,74.125.0.0/16,proxy,no-resolve
+IP-CIDR,173.194.0.0/16,proxy,no-resolve
+HOST-SUFFIX,265.com,proxy
+HOST-SUFFIX,2mdn.net,proxy
+HOST-SUFFIX,alt1-mtalk.google.com,proxy
+HOST-SUFFIX,alt2-mtalk.google.com,proxy
+HOST-SUFFIX,alt3-mtalk.google.com,proxy
+HOST-SUFFIX,alt4-mtalk.google.com,proxy
+HOST-SUFFIX,alt5-mtalk.google.com,proxy
+HOST-SUFFIX,alt6-mtalk.google.com,proxy
+HOST-SUFFIX,alt7-mtalk.google.com,proxy
+HOST-SUFFIX,alt8-mtalk.google.com,proxy
+HOST-SUFFIX,app-measurement.com,proxy
+HOST-SUFFIX,cache.pack.google.com,proxy
+HOST-SUFFIX,clickserve.dartsearch.net,proxy
+HOST-SUFFIX,crl.pki.goog,proxy
+HOST-SUFFIX,dl.google.com,proxy
+HOST-SUFFIX,dl.l.google.com,proxy
+HOST-SUFFIX,googletagmanager.com,proxy
+HOST-SUFFIX,googletagservices.com,proxy
+HOST-SUFFIX,gtm.oasisfeng.com,proxy
+HOST-SUFFIX,mtalk.google.com,proxy
+HOST-SUFFIX,ocsp.pki.goog,proxy
+HOST-SUFFIX,recaptcha.net,proxy
+HOST-SUFFIX,safebrowsing-cache.google.com,proxy
+HOST-SUFFIX,settings.crashlytics.com,proxy
+HOST-SUFFIX,ssl-google-analytics.l.google.com,proxy
+HOST-SUFFIX,toolbarqueries.google.com,proxy
+HOST-SUFFIX,tools.google.com,proxy
+HOST-SUFFIX,tools.l.google.com,proxy
+HOST-SUFFIX,www-googletagmanager.l.google.com,proxy

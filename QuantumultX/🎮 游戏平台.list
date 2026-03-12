@@ -1,0 +1,56 @@
+# Quantumult X Rules for 🎮 游戏平台
+# Generated from ACL4SSR.ini
+# Mode: list
+# Total rules: 51
+
+HOST,cloudsync-prod.s3.amazonaws.com,proxy
+HOST,eaasserts-a.akamaihd.net,proxy
+HOST,origin-a.akamaihd.net,proxy
+HOST,originasserts.akamaized.net,proxy
+HOST,rtm.tnt-ea.com,proxy
+HOST-SUFFIX,ea.com,proxy
+HOST-SUFFIX,origin.com,proxy
+HOST-SUFFIX,epicgames.com,proxy
+HOST-SUFFIX,epicgames.dev,proxy
+HOST-SUFFIX,helpshift.com,proxy
+HOST-SUFFIX,paragon.com,proxy
+HOST-SUFFIX,unrealengine.com,proxy
+HOST-SUFFIX,ol.epicgames.com,proxy
+HOST,steambroadcast.akamaized.net,proxy
+HOST,steamcommunity-a.akamaihd.net,proxy
+HOST,steampipe.akamaized.net,proxy
+HOST,steamstore-a.akamaihd.net,proxy
+HOST,steamusercontent-a.akamaihd.net,proxy
+HOST,steamuserimages-a.akamaihd.net,proxy
+HOST-SUFFIX,fanatical.com,proxy
+HOST-SUFFIX,humblebundle.com,proxy
+HOST-SUFFIX,playartifact.com,proxy
+HOST-SUFFIX,steam-chat.com,proxy
+HOST-SUFFIX,steamcommunity.com,proxy
+HOST-SUFFIX,steamgames.com,proxy
+HOST-SUFFIX,steampowered.com,proxy
+HOST-SUFFIX,steamserver.net,proxy
+HOST-SUFFIX,steamstat.us,proxy
+HOST-SUFFIX,steamstatic.com,proxy
+HOST-SUFFIX,underlords.com,proxy
+HOST-SUFFIX,valvesoftware.com,proxy
+HOST-SUFFIX,playstation.com,proxy
+HOST-SUFFIX,playstation.net,proxy
+HOST-SUFFIX,playstationnetwork.com,proxy
+HOST-SUFFIX,sony.com,proxy
+HOST-SUFFIX,sonyentertainmentnetwork.com,proxy
+HOST-SUFFIX,nintendo-europe.com,proxy
+HOST-SUFFIX,nintendo.be,proxy
+HOST-SUFFIX,nintendo.co.jp,proxy
+HOST-SUFFIX,nintendo.co.uk,proxy
+HOST-SUFFIX,nintendo.com,proxy
+HOST-SUFFIX,nintendo.com.au,proxy
+HOST-SUFFIX,nintendo.de,proxy
+HOST-SUFFIX,nintendo.es,proxy
+HOST-SUFFIX,nintendo.eu,proxy
+HOST-SUFFIX,nintendo.fr,proxy
+HOST-SUFFIX,nintendo.it,proxy
+HOST-SUFFIX,nintendo.jp,proxy
+HOST-SUFFIX,nintendo.net,proxy
+HOST-SUFFIX,nintendo.nl,proxy
+HOST-SUFFIX,nintendowifi.net,proxy

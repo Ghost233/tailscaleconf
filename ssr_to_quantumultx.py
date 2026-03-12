@@ -14,9 +14,10 @@ from pathlib import Path
 from typing import Dict, List, Optional, Tuple
 
 # 配置常量
-ACL4SSR_INI_PATH = "/Users/ghost233/code/tailscaleconf/ACL4SSR.ini"
-OUTPUT_DIR = "/Users/ghost233/code/tailscaleconf/QuantumultX"
-CACHE_DIR = "/Users/ghost233/code/tailscaleconf/cache"
+PROJECT_ROOT = Path(__file__).resolve().parent
+ACL4SSR_INI_PATH = str(PROJECT_ROOT / "ACL4SSR.ini")
+OUTPUT_DIR = str(PROJECT_ROOT / "QuantumultX")
+CACHE_DIR = str(PROJECT_ROOT / "cache")
 
 # 策略组名映射（用于生成独立规则列表）
 POLICY_MAP = {
@@ -67,7 +68,14 @@ RULE_TYPE_MAP = {
 class QuantumultXConverter:
     """SSR规则转Quantumult X转换器"""
 
-    def __init__(self, ini_path: str, output_dir: str, cache_dir: str, mode: str = "list", max_workers: int = 10):
+    def __init__(
+        self,
+        ini_path: str,
+        output_dir: str,
+        cache_dir: str,
+        mode: str = "list",
+        max_workers: int = 10,
+    ):
         self.ini_path = ini_path
         self.output_dir = Path(output_dir)
         self.cache_dir = Path(cache_dir)
@@ -138,7 +146,9 @@ class QuantumultXConverter:
             print(f"  下载异常: {exc}")
             return None
 
-    def convert_clash_rule_to_quantumult(self, rule: str, policy_group: str) -> Optional[str]:
+    def convert_clash_rule_to_quantumult(
+        self, rule: str, policy_group: str
+    ) -> Optional[str]:
         """将Clash规则转换为Quantumult X格式"""
         rule = rule.strip()
         if not rule or rule.startswith("#"):
@@ -200,6 +210,13 @@ class QuantumultXConverter:
                     f"GEOIP,{geoip_type},{POLICY_MAP.get(policy_group, policy_group)}"
                 )
                 print(f"  添加GEOIP规则: {geoip_type}")
+            elif special_rule.startswith("IP-CIDR,"):
+                cidr = special_rule.split(",", 1)[1]
+                final_policy = POLICY_MAP.get(policy_group, policy_group)
+                self.converted_rules[policy_group].append(
+                    f"IP-CIDR,{cidr},{final_policy},no-resolve"
+                )
+                print(f"  添加IP-CIDR规则: {cidr}")
             return
 
         content = self.download_rule_file(rule_def)
@@ -307,7 +324,9 @@ class QuantumultXConverter:
         """执行完整的转换流程"""
         print("=" * 60)
         print("SSR分流规则转Quantumult X规则")
-        print(f"模式: {self.mode} ({'独立规则列表' if self.mode == 'list' else '完整配置文件'})")
+        print(
+            f"模式: {self.mode} ({'独立规则列表' if self.mode == 'list' else '完整配置文件'})"
+        )
         print(f"并发数: {self.max_workers}")
         print("=" * 60)
 
@@ -316,7 +335,10 @@ class QuantumultXConverter:
         print(f"\n开始并发处理 {len(self.rulesets)} 个规则集...")
         with ThreadPoolExecutor(max_workers=self.max_workers) as executor:
             future_to_ruleset = {
-                executor.submit(self.process_ruleset, policy_group, rule_def): (policy_group, rule_def)
+                executor.submit(self.process_ruleset, policy_group, rule_def): (
+                    policy_group,
+                    rule_def,
+                )
                 for policy_group, rule_def in self.rulesets
             }
 
@@ -358,7 +380,9 @@ def main() -> None:
     print(f"启动模式: {mode}")
     print(f"并发数: {max_workers}\n")
 
-    converter = QuantumultXConverter(ACL4SSR_INI_PATH, OUTPUT_DIR, CACHE_DIR, mode=mode, max_workers=max_workers)
+    converter = QuantumultXConverter(
+        ACL4SSR_INI_PATH, OUTPUT_DIR, CACHE_DIR, mode=mode, max_workers=max_workers
+    )
     converter.convert()
 
 

@@ -1,8 +1,9 @@
 # Shadowrocket Rules for 🛑 广告拦截
 # Generated from ACL4SSR.ini
 # Mode: list
-# Total rules: 588
+# Total rules: 589
 
+IP-CIDR,169.254.169.254/32,REJECT,no-resolve
 DOMAIN-KEYWORD,admarvel,REJECT
 DOMAIN-KEYWORD,admaster,REJECT
 DOMAIN-KEYWORD,adsage,REJECT

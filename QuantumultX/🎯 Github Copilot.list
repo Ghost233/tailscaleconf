@@ -1,0 +1,13 @@
+# Quantumult X Rules for 🎯 Github Copilot
+# Generated from ACL4SSR.ini
+# Mode: list
+# Total rules: 8
+
+HOST,copilot-proxy.githubusercontent.com,proxy
+HOST,origin-tracker.githubusercontent.com,proxy
+HOST-SUFFIX,githubcopilot.com,proxy
+HOST-SUFFIX,individual.githubcopilot.com,proxy
+HOST-SUFFIX,business.githubcopilot.com,proxy
+HOST-SUFFIX,enterprise.githubcopilot.com,proxy
+HOST-SUFFIX,generativelanguage.googleapis.com,proxy
+HOST-SUFFIX,gemini.google.com,proxy

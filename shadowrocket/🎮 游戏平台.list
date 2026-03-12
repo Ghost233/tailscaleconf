@@ -3,6 +3,12 @@
 # Mode: list
 # Total rules: 51
 
+DOMAIN-SUFFIX,epicgames.com,PROXY
+DOMAIN-SUFFIX,epicgames.dev,PROXY
+DOMAIN-SUFFIX,helpshift.com,PROXY
+DOMAIN-SUFFIX,paragon.com,PROXY
+DOMAIN-SUFFIX,unrealengine.com,PROXY
+DOMAIN-SUFFIX,ol.epicgames.com,PROXY
 DOMAIN,steambroadcast.akamaized.net,PROXY
 DOMAIN,steamcommunity-a.akamaihd.net,PROXY
 DOMAIN,steampipe.akamaized.net,PROXY
@@ -43,12 +49,6 @@ DOMAIN-SUFFIX,nintendo.jp,PROXY
 DOMAIN-SUFFIX,nintendo.net,PROXY
 DOMAIN-SUFFIX,nintendo.nl,PROXY
 DOMAIN-SUFFIX,nintendowifi.net,PROXY
-DOMAIN-SUFFIX,epicgames.com,PROXY
-DOMAIN-SUFFIX,epicgames.dev,PROXY
-DOMAIN-SUFFIX,helpshift.com,PROXY
-DOMAIN-SUFFIX,paragon.com,PROXY
-DOMAIN-SUFFIX,unrealengine.com,PROXY
-DOMAIN-SUFFIX,ol.epicgames.com,PROXY
 DOMAIN-SUFFIX,playstation.com,PROXY
 DOMAIN-SUFFIX,playstation.net,PROXY
 DOMAIN-SUFFIX,playstationnetwork.com,PROXY

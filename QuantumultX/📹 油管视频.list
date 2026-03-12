@@ -1,0 +1,19 @@
+# Quantumult X Rules for 📹 油管视频
+# Generated from ACL4SSR.ini
+# Mode: list
+# Total rules: 14
+
+HOST-KEYWORD,youtube,proxy
+HOST,youtubei.googleapis.com,proxy
+HOST,yt3.ggpht.com,proxy
+HOST-SUFFIX,googlevideo.com,proxy
+HOST-SUFFIX,gvt2.com,proxy
+HOST-SUFFIX,withyoutube.com,proxy
+HOST-SUFFIX,youtu.be,proxy
+HOST-SUFFIX,youtube-nocookie.com,proxy
+HOST-SUFFIX,youtube.com,proxy
+HOST-SUFFIX,youtubeeducation.com,proxy
+HOST-SUFFIX,youtubegaming.com,proxy
+HOST-SUFFIX,youtubekids.com,proxy
+HOST-SUFFIX,yt.be,proxy
+HOST-SUFFIX,ytimg.com,proxy

@@ -1,0 +1,8 @@
+# Quantumult X Rules for 🎇 Anthropic
+# Generated from ACL4SSR.ini
+# Mode: list
+# Total rules: 3
+
+HOST-KEYWORD,anthropic,proxy
+HOST-KEYWORD,claude,proxy
+HOST-SUFFIX,tavily.com,proxy

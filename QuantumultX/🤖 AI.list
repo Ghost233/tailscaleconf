@@ -1,0 +1,8 @@
+# Quantumult X Rules for 🤖 AI
+# Generated from ACL4SSR.ini
+# Mode: list
+# Total rules: 3
+
+HOST-SUFFIX,dify.ai,proxy
+HOST-SUFFIX,cursor.sh,proxy
+HOST-SUFFIX,cursor.com,proxy
