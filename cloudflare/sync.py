@@ -129,7 +129,7 @@ def resolve_tunnel_id(api: CloudflareAPI, tunnel_name: str) -> str:
     query = urllib.parse.urlencode(
         {"name": tunnel_name, "is_deleted": "false", "per_page": 1000}
     )
-    result = api.request("GET", f"/tunnels?{query}")
+    result = api.request("GET", f"/cfd_tunnel?{query}")
     tunnels = result if isinstance(result, list) else []
     matches = [
         tunnel

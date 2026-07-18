@@ -57,7 +57,7 @@ class SyncTests(unittest.TestCase):
         self.assertEqual(sync.resolve_tunnel_id(api, "jp"), "jp-tunnel-id")
         self.assertEqual(
             api.calls,
-            [("GET", "/tunnels?name=jp&is_deleted=false&per_page=1000")],
+            [("GET", "/cfd_tunnel?name=jp&is_deleted=false&per_page=1000")],
         )
 
     def test_missing_tunnel_name_is_rejected(self) -> None:
