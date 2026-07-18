@@ -1,0 +1,35 @@
+# AI hostnames routed through the hk Cloudflare Tunnel.
+# One hostname per line. Blank lines and lines beginning with # are ignored.
+
+anthropic.com
+auth0.com
+business.githubcopilot.com
+challenges.cloudflare.com
+chatgpt.com
+claude.ai
+claude.com
+claudeusercontent.com
+client-api.arkoselabs.com
+copilot-proxy.githubusercontent.com
+cursor.com
+cursor.sh
+dify.ai
+enterprise.githubcopilot.com
+events.statsigapi.net
+featuregates.org
+gemini.google.com
+generativelanguage.googleapis.com
+githubcopilot.com
+identrust.com
+individual.githubcopilot.com
+intercom.io
+intercomcdn.com
+oaistatic.com
+oaiusercontent.com
+openai.com
+openaiapi-site.azureedge.net
+origin-tracker.githubusercontent.com
+sentry.io
+sora.com
+stripe.com
+tavily.com

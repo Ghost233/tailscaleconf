@@ -1,0 +1,15 @@
+{
+  "account_id": "24de50099c5a5f8c14d224e5e3653316",
+  "mobile_profile": {
+    "id": "e6a109f5-ec65-4893-aaff-a2f25e9d1797",
+    "name": "手机专用",
+    "split_tunnel_mode": "exclude"
+  },
+  "split_tunnel_entries": "split-tunnel-exclude.json",
+  "hostname_routes": {
+    "tunnel_id": "2d0bd8fb-342a-4790-b8ad-25bbf300cce4",
+    "tunnel_name": "hk",
+    "comment_prefix": "tailscaleconf:ai",
+    "entries_file": "ai-hostnames.list"
+  }
+}

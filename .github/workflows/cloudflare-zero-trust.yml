@@ -1,0 +1,35 @@
+name: Sync Cloudflare Zero Trust
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: cloudflare-zero-trust-main
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v6
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+
+      - name: Test configuration compiler
+        run: python3 -m unittest discover -s cloudflare -p 'test_*.py'
+
+      - name: Replace Split Tunnel list and reconcile AI routes
+        env:
+          CF_API_TOKEN: ${{ secrets.CF_API_TOKEN }}
+        run: python3 cloudflare/sync.py --apply

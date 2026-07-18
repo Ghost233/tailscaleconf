@@ -1,0 +1,23 @@
+[
+  {"address": "10.0.0.0/8", "description": "Private network"},
+  {"address": "100.64.0.0/12", "description": "CGNAT before Cloudflare token range"},
+  {"address": "100.81.0.0/16", "description": "CGNAT after Cloudflare token range"},
+  {"address": "100.82.0.0/15", "description": "CGNAT after Cloudflare token range"},
+  {"address": "100.84.0.0/14", "description": "CGNAT after Cloudflare token range"},
+  {"address": "100.88.0.0/13", "description": "CGNAT after Cloudflare token range"},
+  {"address": "100.96.0.0/11", "description": "CGNAT after Cloudflare token range"},
+  {"address": "169.254.0.0/16", "description": "IPv4 link-local"},
+  {"address": "172.16.0.0/12", "description": "Private network"},
+  {"address": "192.0.0.0/24", "description": "IETF protocol assignments"},
+  {"address": "192.168.0.0/16", "description": "Private network"},
+  {"address": "224.0.0.0/24", "description": "Local multicast"},
+  {"address": "240.0.0.0/4", "description": "Reserved IPv4"},
+  {"address": "255.255.255.255/32", "description": "IPv4 broadcast"},
+  {"address": "fe80::/10", "description": "IPv6 link-local"},
+  {"address": "fd00::/8", "description": "IPv6 unique local"},
+  {"address": "ff01::/16", "description": "IPv6 interface multicast"},
+  {"address": "ff02::/16", "description": "IPv6 link multicast"},
+  {"address": "ff03::/16", "description": "IPv6 realm multicast"},
+  {"address": "ff04::/16", "description": "IPv6 admin multicast"},
+  {"address": "ff05::/16", "description": "IPv6 site multicast"}
+]
