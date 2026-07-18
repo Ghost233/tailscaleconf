@@ -7,8 +7,7 @@
   },
   "split_tunnel_entries": "split-tunnel-exclude.json",
   "hostname_routes": {
-    "tunnel_id": "2d0bd8fb-342a-4790-b8ad-25bbf300cce4",
-    "tunnel_name": "hk",
+    "tunnel_name": "jp",
     "comment_prefix": "tailscaleconf:ai",
     "entries_file": "ai-hostnames.list"
   }

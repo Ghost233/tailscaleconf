@@ -10,6 +10,7 @@ import os
 import re
 import sys
 import urllib.error
+import urllib.parse
 import urllib.request
 from pathlib import Path
 from typing import Any
@@ -124,6 +125,28 @@ def active_hostname_routes(result: Any) -> list[dict[str, Any]]:
     return [route for route in routes if not route.get("deleted_at")]
 
 
+def resolve_tunnel_id(api: CloudflareAPI, tunnel_name: str) -> str:
+    query = urllib.parse.urlencode(
+        {"name": tunnel_name, "is_deleted": "false", "per_page": 1000}
+    )
+    result = api.request("GET", f"/tunnels?{query}")
+    tunnels = result if isinstance(result, list) else []
+    matches = [
+        tunnel
+        for tunnel in tunnels
+        if str(tunnel.get("name", "")) == tunnel_name and not tunnel.get("deleted_at")
+    ]
+    if not matches:
+        raise RuntimeError(f"Cloudflare Tunnel not found: {tunnel_name}")
+    if len(matches) > 1:
+        raise RuntimeError(f"multiple Cloudflare Tunnels found with name: {tunnel_name}")
+    tunnel_id = str(matches[0].get("id", ""))
+    if not tunnel_id:
+        raise RuntimeError(f"Cloudflare Tunnel has no ID: {tunnel_name}")
+    print(f"resolved Tunnel: {tunnel_name} -> {tunnel_id}")
+    return tunnel_id
+
+
 def sync_hostname_routes(
     api: CloudflareAPI,
     desired_hostnames: list[str],
@@ -208,6 +231,10 @@ def main() -> int:
         if not token:
             raise RuntimeError("CF_API_TOKEN is required with --apply")
         api = CloudflareAPI(config["account_id"], token)
+        route_config = config["hostname_routes"]
+        tunnel_name = route_config["tunnel_name"]
+        tunnel_id = route_config.get("tunnel_id") or resolve_tunnel_id(api, tunnel_name)
+
         profile = config["mobile_profile"]
         mode = profile.get("split_tunnel_mode", "exclude")
         if mode not in {"include", "exclude"}:
@@ -216,12 +243,11 @@ def main() -> int:
         api.request("PUT", f"/devices/policy/{profile['id']}/{mode}", split_entries)
         print(f"replaced {profile['name']} Split Tunnel {mode} list: {len(split_entries)} entries")
 
-        route_config = config["hostname_routes"]
         sync_hostname_routes(
             api,
             hostnames,
-            route_config["tunnel_id"],
-            route_config.get("tunnel_name", route_config["tunnel_id"]),
+            tunnel_id,
+            tunnel_name,
             route_config["comment_prefix"],
         )
         return 0

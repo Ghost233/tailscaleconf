@@ -3,21 +3,23 @@
 本目录管理两类配置：
 
 1. `手机专用` 设备配置文件的 Split Tunnel Exclude 列表。
-2. `ai-hostnames.list` 中 AI 域名的 Hostname Routes，全部指向 `hk` Tunnel。
+2. `ai-hostnames.list` 中 AI 域名的 Hostname Routes，全部指向 `jp` Tunnel。
 
 Split Tunnel 只决定流量是否进入 Cloudflare One Client，不能选择出口。AI 域名使用
-Hostname Route 才能经 `hk` 上的 `cloudflared` 访问公网，并使用服务器公网 IP 出口。
+Hostname Route 才能经 `jp` 上的 `cloudflared` 访问公网，并使用服务器公网 IP 出口。
 
 ## 文件
 
-- `config.json`：Cloudflare Account、手机配置文件、`hk` Tunnel 以及专用列表路径。
+- `config.json`：Cloudflare Account、手机配置文件、`jp` Tunnel 以及专用列表路径。
 - `split-tunnel-exclude.json`：每次同步都会完整覆盖到 `手机专用` 的 Exclude 列表。
-- `ai-hostnames.list`：经 `hk` 出口的独立 AI 域名列表。
+- `ai-hostnames.list`：经 `jp` 出口的独立 AI 域名列表。
 - `sync.py`：校验配置、解析 AI 规则并调用 Cloudflare API。
 - `test_sync.py`：离线单元测试。
 
 `100.80.0.0/16` 未加入 Exclude。这是 Hostname Route 使用的 Cloudflare token IP
-范围，必须继续经过 WARP，AI 域名才能被送到 `hk` Tunnel。
+范围，必须继续经过 WARP，AI 域名才能被送到 `jp` Tunnel。
+
+同步时会按 `tunnel_name` 查询 Tunnel ID，因此切换服务器不需要在仓库中硬编码 UUID。
 
 ## AI 规则来源
 
