@@ -1,10 +1,11 @@
-# AI hostnames routed through the hk Cloudflare Tunnel.
+# AI hostnames routed through the jp Cloudflare Tunnel.
 # One hostname per line. Blank lines and lines beginning with # are ignored.
 
 anthropic.com
 auth0.com
 business.githubcopilot.com
 challenges.cloudflare.com
+chat.com
 chatgpt.com
 claude.ai
 claude.com
@@ -24,6 +25,7 @@ identrust.com
 individual.githubcopilot.com
 intercom.io
 intercomcdn.com
+ipify.org
 oaistatic.com
 oaiusercontent.com
 openai.com
