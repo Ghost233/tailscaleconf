@@ -3,5 +3,6 @@
 # Anthropic
 DOMAIN-KEYWORD,anthropic
 DOMAIN-KEYWORD,claude
+DOMAIN-KEYWORD,ipify.org
   
 DOMAIN-SUFFIX,tavily.com
